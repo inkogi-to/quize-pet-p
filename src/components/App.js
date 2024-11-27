@@ -20,7 +20,7 @@ const initialState = {
   answer: null,
   points: 0,
   highscore: 0,
-  secondsRemaining: 10,
+  secondsRemaining: null,
 };
 
 function reducer(state, action) {
@@ -40,7 +40,7 @@ function reducer(state, action) {
       return {
         ...state,
         status: "active",
-        secondRemaining: state.questions.length * 30,
+        secondsRemaining: state.questions.length * 30,
       };
     case "newAnswer":
       const question = state.questions.at(state.index);
@@ -56,7 +56,8 @@ function reducer(state, action) {
       return {
         ...state,
         index: state.index + 1,
-        answer: null,
+        answer:null
+       
       };
     case "finish":
       return {
@@ -75,7 +76,7 @@ function reducer(state, action) {
     case "tick":
       return {
         ...state,
-        secondsRemaining: state.secondRemaining - 1,
+        secondsRemaining: state.secondsRemaining - 1,
         status: state.secondsRemaining === 0 ? "finished" : state.status,
       };
 
