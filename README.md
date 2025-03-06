@@ -1,70 +1,99 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Quiz Application
 
-## Available Scripts
+A modern quiz application built with React that challenges users with timed questions and tracks their progress and scores.
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+This interactive quiz application provides users with a seamless experience to test their knowledge on various topics. The application features a clean UI with a timer, progress tracking, and score calculation.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Dynamic Quiz Flow**: Navigate through questions with a intuitive user interface
+- **Timed Quizzes**: Each quiz has a timer based on the number of questions
+- **Score Tracking**: Automatically calculates and displays user scores
+- **Progress Bar**: Visual indication of quiz progress
+- **High Score System**: Keeps track of the user's best performance
+- **Error Handling**: Graceful error management for API failures
+- **Responsive Design**: Works across different screen sizes
 
-### `npm test`
+## Technology Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Frontend**: React.js with Hooks (useReducer, useContext, useEffect)
+- **Styling**: Tailwind CSS for responsive design
+- **State Management**: React Context API and useReducer for global state
+- **API**: RESTful API endpoints for quiz questions
 
-### `npm run build`
+## Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+├── src/
+│   ├── components/
+│   │   ├── Error.jsx
+│   │   ├── FinishScreen.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Header.jsx
+│   │   ├── Loader.jsx
+│   │   ├── Main.jsx
+│   │   ├── NextButton.jsx
+│   │   ├── Progress.jsx
+│   │   ├── Question.jsx
+│   │   ├── StartScreen.jsx
+│   │   └── Timer.jsx
+│   ├── contexts/
+│   │   └── QuizContext.jsx    # Context provider for quiz state
+│   ├── App.jsx                # Main application component
+│   └── index.jsx              # Entry point
+├── server/                    # Backend API for serving quiz questions
+└── package.json
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
 
-### `npm run eject`
+- Node.js (v14 or later)
+- npm or yarn
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Start the development server:
+   ```
+   npm run dev
+   ```
+4. In a separate terminal, start the questions API:
+   ```
+   npm run server
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## How It Works
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The application uses React's Context API along with useReducer hook for state management. This pattern provides a clean and efficient way to manage complex state transitions in the quiz flow:
 
-## Learn More
+1. **Loading**: Fetches questions from the API
+2. **Ready**: Displays the start screen
+3. **Active**: Shows questions, tracks answers and time
+4. **Finished**: Displays the final score and high score
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The quiz state is managed through a reducer function that handles various actions like loading data, answering questions, moving to the next question, and finishing the quiz.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## API
 
-### Code Splitting
+The application fetches quiz questions from a local API endpoint:
+```
+GET http://localhost:8000/questions
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## License
 
-### Analyzing the Bundle Size
+MIT
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Acknowledgements
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Icons provided by [Lucide React](https://lucide.dev)
+- UI components inspired by [shadcn/ui](https://ui.shadcn.com/)
